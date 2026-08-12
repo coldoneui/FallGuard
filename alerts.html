@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FallGuard - Alerts</title>
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    :root {
+      --bg: #f4f5f7;
+      --card: #fff;
+      --text: #1a1a18;
+      --sub: #777;
+      --red: #E24B4A;
+      --yellow: #F6A623;
+      --green: #3B9C3A;
+      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+      --radius: 16px;
+      --border: rgba(0,0,0,0.08);
+    }
+
+    body {
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .phone {
+      width: 390px;
+      max-width: 100%;
+      min-height: 100vh;
+      background: var(--bg);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Topbar */
+    .topbar {
+      background: white;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-btn {
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .bell {
+      font-size: 22px;
+      color: var(--red);
+    }
+
+    /* Content */
+    .content {
+      padding: 18px;
+      padding-bottom: 100px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: #888;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    /* Alert Card */
+    .alert-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--red);
+    }
+
+    .medium { border-left-color: var(--yellow); }
+    .low { border-left-color: var(--green); }
+
+    .alert-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .patient-name {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .severity {
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .high {
+      background: #fde9e9;
+      color: var(--red);
+    }
+
+    .med {
+      background: #fff3df;
+      color: #b37400;
+    }
+
+    .safe {
+      background: #e8f7ea;
+      color: var(--green);
+    }
+
+    .meta {
+      font-size: 12px;
+      color: var(--sub);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .resolve {
+      background: #f4f4f4;
+    }
+
+    .call {
+      background: var(--red);
+      color: white;
+    }
+
+    /* Bottom Nav */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 390px;
+      max-width: 100%;
+      background: white;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.04);
+    }
+
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      color: #777;
+      cursor: pointer;
+    }
+
+    .nav-btn i {
+      font-size: 20px;
+    }
+
+    .active {
+      color: var(--red);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="phone">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="top-left">
+      <i class="ti ti-arrow-left back-btn"></i>
+      <div class="title">Alerts</div>
+    </div>
+    <i class="ti ti-bell bell"></i>
+  </div>
+
+  <div class="content">
+
+    <div class="section-title">Active Alerts</div>
+
+    <!-- High -->
+    <div class="alert-card">
+      <div class="alert-top">
+        <div class="patient-name">Lolo Pete</div>
+        <span class="severity high">HIGH</span>
+      </div>
+
+      <div class="meta">
+        Fall Detected<br>
+        Room 3 · 2:47 PM<br>
+        Confidence: 94%
+      </div>
+
+      <div class="actions">
+        <button class="btn resolve">Resolve</button>
+        <button class="btn call">Call</button>
+      </div>
+    </div>
+
+    <!-- Medium -->
+    <div class="alert-card medium">
+      <div class="alert-top">
+        <div class="patient-name">Mang Ben</div>
+        <span class="severity med">MEDIUM</span>
+      </div>
+
+      <div class="meta">
+        Near-fall detected<br>
+        Bathroom · 1:18 PM<br>
+        Confidence: 68%
+      </div>
+
+      <div class="actions">
+        <button class="btn resolve">Resolve</button>
+        <button class="btn call">Call</button>
+      </div>
+    </div>
+
+    <!-- Low -->
+    <div class="alert-card low">
+      <div class="alert-top">
+        <div class="patient-name">Lola Ana</div>
+        <span class="severity safe">LOW</span>
+      </div>
+
+      <div class="meta">
+        Low movement warning<br>
+        Room 1 · 11:40 AM<br>
+        Monitoring active
+      </div>
+
+      <div class="actions">
+        <button class="btn resolve">Ignore</button>
+        <button class="btn call">Check</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Nav -->
+  <div class="bottom-nav">
+    <div class="nav-btn">
+      <i class="ti ti-home"></i>
+      <span>Home</span>
+    </div>
+
+    <div class="nav-btn">
+      <i class="ti ti-users"></i>
+      <span>Patients</span>
+    </div>
+
+    <div class="nav-btn active">
+      <i class="ti ti-bell"></i>
+      <span>Alerts</span>
+    </div>
+
+    <div class="nav-btn">
+      <i class="ti ti-history"></i>
+      <span>History</span>
+    </div>
+
+    <div class="nav-btn">
+      <i class="ti ti-settings"></i>
+      <span>Settings</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Back
+document.querySelectorAll(".nav-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const page = btn.textContent.trim();
+
+    if (page === "Home") {
+      window.location.href = "index.html";
+    }
+
+    if (page === "Patients") {
+      window.location.href = "patients.html";
+    }
+
+    if (page === "Alerts") {
+      window.location.href = "alerts.html";
+    }
+
+    if (page === "History") {
+      window.location.href = "history.html";
+    }
+
+    if (page === "Settings") {
+      window.location.href = "settings.html";
+    }
+  });
+});
+</script>
+
+</body>
+</html>

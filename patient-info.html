@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>FallGuard - Patient Information</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+  />
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    :root {
+      --bg: #f4f5f7;
+      --card: #ffffff;
+      --text: #1a1a18;
+      --sub: #777;
+      --red: #E24B4A;
+      --green: #3B9C3A;
+      --blue: #378ADD;
+      --yellow: #F6A623;
+      --border: rgba(0,0,0,0.08);
+      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+      --radius: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .phone {
+      width: 390px;
+      max-width: 100%;
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    /* TOP BAR */
+
+    .topbar {
+      background: white;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-btn {
+      font-size: 23px;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      color: var(--red);
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .user-icon {
+      font-size: 23px;
+      color: var(--blue);
+    }
+
+    /* CONTENT */
+
+    .content {
+      padding: 18px;
+      padding-bottom: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: bold;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+      margin-top: 18px;
+    }
+
+    /* PROFILE */
+
+    .profile-card {
+      text-align: center;
+      padding: 24px 16px;
+    }
+
+    .avatar {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 25px;
+      font-weight: bold;
+      margin: auto;
+      margin-bottom: 12px;
+    }
+
+    .patient-name {
+      font-size: 21px;
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .patient-details {
+      color: var(--sub);
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* INFORMATION ROWS */
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .info-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 10px;
+      background: #f4f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--blue);
+      font-size: 18px;
+    }
+
+    .heart-icon {
+      color: var(--red);
+      background: #fdeeee;
+    }
+
+    .info-label {
+      font-size: 12px;
+      color: var(--sub);
+    }
+
+    .info-value {
+      font-size: 13px;
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    /* HEART RATE */
+
+    .heart-rate-card {
+      background: linear-gradient(135deg, #fff, #fff3f3);
+      border: 1px solid #f7d5d5;
+    }
+
+    .heart-rate-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .heart-rate-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .heart-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fde9e9;
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+    }
+
+    .heart-circle i {
+      animation: heartbeat 1.2s infinite;
+    }
+
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+      }
+
+      20% {
+        transform: scale(1.15);
+      }
+
+      40% {
+        transform: scale(1);
+      }
+
+      60% {
+        transform: scale(1.15);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .heart-label {
+      font-size: 12px;
+      color: var(--sub);
+    }
+
+    .heart-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--red);
+      margin-top: 2px;
+    }
+
+    .heart-bpm {
+      font-size: 12px;
+      font-weight: normal;
+    }
+
+    .heart-updated {
+      font-size: 10px;
+      color: #999;
+      margin-top: 3px;
+    }
+
+    .live-badge {
+      font-size: 10px;
+      font-weight: bold;
+      background: #e8f7ea;
+      color: var(--green);
+      padding: 5px 9px;
+      border-radius: 20px;
+    }
+
+    /* DEVICE */
+
+    .device-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .device-name {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .online {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .device-details {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--sub);
+      line-height: 1.8;
+    }
+
+    /* RECENT ACTIVITY */
+
+    .activity {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    .activity:last-child {
+      border-bottom: none;
+    }
+
+    .activity-icon {
+      width: 35px;
+      height: 35px;
+      min-width: 35px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .activity-title {
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .activity-time {
+      font-size: 11px;
+      color: var(--sub);
+      margin-top: 3px;
+    }
+
+    .red {
+      background: var(--red);
+    }
+
+    .green {
+      background: var(--green);
+    }
+
+    .blue {
+      background: var(--blue);
+    }
+
+    .yellow {
+      background: var(--yellow);
+    }
+
+    /* BUTTON */
+
+    .alert-button {
+      width: 100%;
+      border: none;
+      background: var(--red);
+      color: white;
+      border-radius: 14px;
+      padding: 13px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="phone">
+
+  <!-- TOPBAR -->
+
+  <div class="topbar">
+
+    <div class="top-left">
+
+      <i
+        class="ti ti-arrow-left back-btn"
+        id="backBtn">
+      </i>
+
+      <div class="page-title">
+        Patient Information
+      </div>
+
+    </div>
+
+    <i class="ti ti-user user-icon"></i>
+
+  </div>
+
+
+  <div class="content">
+
+
+    <!-- PROFILE -->
+
+    <div class="card profile-card">
+
+      <div
+        class="avatar"
+        id="patientAvatar">
+      </div>
+
+      <div
+        class="patient-name"
+        id="patientName">
+      </div>
+
+      <div
+        class="patient-details"
+        id="patientDetails">
+      </div>
+
+      <div
+        class="status-badge"
+        id="patientStatus">
+      </div>
+
+    </div>
+
+
+    <!-- HEART RATE -->
+
+    <div class="section-title">
+      Heart Rate
+    </div>
+
+    <div class="card heart-rate-card">
+
+      <div class="heart-rate-header">
+
+        <div class="heart-rate-left">
+
+          <div class="heart-circle">
+            <i class="ti ti-heartbeat"></i>
+          </div>
+
+          <div>
+
+            <div class="heart-label">
+              Current Heart Rate
+            </div>
+
+            <div class="heart-value">
+              <span id="heartRate"></span>
+              <span class="heart-bpm">BPM</span>
+            </div>
+
+            <div class="heart-updated">
+              Last updated: Just now
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="live-badge">
+          ● LIVE
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PATIENT INFORMATION -->
+
+    <div class="section-title">
+      Patient Information
+    </div>
+
+    <div class="card">
+
+      <!-- Age -->
+
+      <div class="info-row">
+
+        <div class="info-left">
+
+          <div class="info-icon">
+            <i class="ti ti-calendar"></i>
+          </div>
+
+          <div>
+
+            <div class="info-label">
+              Age
+            </div>
+
+            <div
+              class="info-value"
+              id="patientAge">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Room -->
+
+      <div class="info-row">
+
+        <div class="info-left">
+
+          <div class="info-icon">
+            <i class="ti ti-door"></i>
+          </div>
+
+          <div>
+
+            <div class="info-label">
+              Room
+            </div>
+
+            <div
+              class="info-value"
+              id="patientRoom">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Current Activity -->
+
+      <div class="info-row">
+
+        <div class="info-left">
+
+          <div class="info-icon">
+            <i class="ti ti-activity-heartbeat"></i>
+          </div>
+
+          <div>
+
+            <div class="info-label">
+              Current Activity
+            </div>
+
+            <div
+              class="info-value"
+              id="patientActivity">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Heart Rate -->
+
+      <div class="info-row">
+
+        <div class="info-left">
+
+          <div class="info-icon heart-icon">
+            <i class="ti ti-heartbeat"></i>
+          </div>
+
+          <div>
+
+            <div class="info-label">
+              Heart Rate
+            </div>
+
+            <div
+              class="info-value"
+              id="patientHeartRate">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Risk Level -->
+
+      <div class="info-row">
+
+        <div class="info-left">
+
+          <div class="info-icon">
+            <i class="ti ti-shield-check"></i>
+          </div>
+
+          <div>
+
+            <div class="info-label">
+              Risk Level
+            </div>
+
+            <div
+              class="info-value"
+              id="riskLevel">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- WEARABLE DEVICE -->
+
+    <div class="section-title">
+      Wearable Device
+    </div>
+
+    <div class="card">
+
+      <div class="device-header">
+
+        <div
+          class="device-name"
+          id="deviceName">
+        </div>
+
+        <div class="online">
+          ● Online
+        </div>
+
+      </div>
+
+      <div class="device-details">
+
+        Battery:
+        <strong id="deviceBattery"></strong>
+
+        <br>
+
+        Connection:
+        <strong>Wi-Fi</strong>
+
+        <br>
+
+        Heart Rate Sensor:
+        <strong>MAX30102</strong>
+
+        <br>
+
+        Monitoring:
+        <strong>Active</strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- RECENT ACTIVITY -->
+
+    <div class="section-title">
+      Recent Activity
+    </div>
+
+    <div class="card">
+
+      <div class="activity">
+
+        <div
+          class="activity-icon"
+          id="activityIcon1">
+
+          <i id="activityIconSymbol1"></i>
+
+        </div>
+
+        <div>
+
+          <div
+            class="activity-title"
+            id="activityTitle1">
+          </div>
+
+          <div
+            class="activity-time"
+            id="activityTime1">
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Heart Rate Reading Activity -->
+
+      <div class="activity">
+
+        <div class="activity-icon red">
+          <i class="ti ti-heartbeat"></i>
+        </div>
+
+        <div>
+
+          <div class="activity-title">
+            Heart rate reading received
+          </div>
+
+          <div
+            class="activity-time"
+            id="recentHeartRate">
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="activity">
+
+        <div class="activity-icon blue">
+          <i class="ti ti-device-watch"></i>
+        </div>
+
+        <div>
+
+          <div class="activity-title">
+            Device connected
+          </div>
+
+          <div class="activity-time">
+            Monitoring active
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="alert-button"
+      onclick="goToAlerts()">
+
+      <i class="ti ti-bell"></i>
+      View Alerts
+
+    </button>
+
+
+  </div>
+
+</div>
+
+
+<script>
+
+  /* =========================
+     PATIENT DATA
+     ========================= */
+
+  const patients = {
+
+    pete: {
+
+      name: "Lolo Pete",
+
+      initials: "LP",
+
+      age: "78 years old",
+
+      room: "Room 3",
+
+      activity: "Fall Detected",
+
+      heartRate: 102,
+
+      risk: "High Risk",
+
+      status: "● Fall Detected",
+
+      color: "#E24B4A",
+
+      statusBackground: "#fde9e9",
+
+      statusColor: "#E24B4A",
+
+      device: "ESP32-W3",
+
+      battery: "62%",
+
+      recentTitle: "Fall detected",
+
+      recentTime: "Today · 2:47 PM",
+
+      activityColor: "red",
+
+      activityIcon: "ti ti-alert-triangle"
+
+    },
+
+
+    ana: {
+
+      name: "Lola Ana",
+
+      initials: "LA",
+
+      age: "74 years old",
+
+      room: "Room 1",
+
+      activity: "Walking",
+
+      heartRate: 78,
+
+      risk: "Stable",
+
+      status: "● Safe · Walking",
+
+      color: "#3B9C3A",
+
+      statusBackground: "#e8f7ea",
+
+      statusColor: "#3B9C3A",
+
+      device: "ESP32-W1",
+
+      battery: "88%",
+
+      recentTitle: "Walking activity detected",
+
+      recentTime: "Today · 2:31 PM",
+
+      activityColor: "green",
+
+      activityIcon: "ti ti-walk"
+
+    },
+
+
+    ben: {
+
+      name: "Mang Ben",
+
+      initials: "MB",
+
+      age: "82 years old",
+
+      room: "Room 2",
+
+      activity: "Resting",
+
+      heartRate: 72,
+
+      risk: "Stable",
+
+      status: "● Safe · Resting",
+
+      color: "#378ADD",
+
+      statusBackground: "#eef4ff",
+
+      statusColor: "#378ADD",
+
+      device: "ESP32-W2",
+
+      battery: "21%",
+
+      recentTitle: "Resting activity detected",
+
+      recentTime: "Today · 1:18 PM",
+
+      activityColor: "blue",
+
+      activityIcon: "ti ti-bed"
+
+    }
+
+  };
+
+
+  /* =========================
+     GET PATIENT FROM URL
+     ========================= */
+
+  const params =
+    new URLSearchParams(window.location.search);
+
+  const patientId =
+    params.get("id");
+
+  const patient =
+    patients[patientId] || patients.pete;
+
+
+  /* =========================
+     DISPLAY PATIENT
+     ========================= */
+
+  document.getElementById("patientAvatar")
+    .textContent = patient.initials;
+
+
+  document.getElementById("patientAvatar")
+    .style.background = patient.color;
+
+
+  document.getElementById("patientName")
+    .textContent = patient.name;
+
+
+  document.getElementById("patientDetails")
+    .textContent =
+      patient.age + " · " + patient.room;
+
+
+  document.getElementById("patientAge")
+    .textContent = patient.age;
+
+
+  document.getElementById("patientRoom")
+    .textContent = patient.room;
+
+
+  document.getElementById("patientActivity")
+    .textContent = patient.activity;
+
+
+  document.getElementById("riskLevel")
+    .textContent = patient.risk;
+
+
+  /* =========================
+     HEART RATE
+     ========================= */
+
+  document.getElementById("heartRate")
+    .textContent = patient.heartRate;
+
+
+  document.getElementById("patientHeartRate")
+    .textContent =
+      patient.heartRate + " BPM";
+
+
+  document.getElementById("recentHeartRate")
+    .textContent =
+      patient.heartRate + " BPM · Just now";
+
+
+  /* =========================
+     DEVICE
+     ========================= */
+
+  document.getElementById("deviceName")
+    .textContent = patient.device;
+
+
+  document.getElementById("deviceBattery")
+    .textContent = patient.battery;
+
+
+  /* =========================
+     STATUS
+     ========================= */
+
+  const status =
+    document.getElementById("patientStatus");
+
+
+  status.textContent =
+    patient.status;
+
+
+  status.style.background =
+    patient.statusBackground;
+
+
+  status.style.color =
+    patient.statusColor;
+
+
+  /* =========================
+     RECENT ACTIVITY
+     ========================= */
+
+  document.getElementById("activityTitle1")
+    .textContent =
+      patient.recentTitle;
+
+
+  document.getElementById("activityTime1")
+    .textContent =
+      patient.recentTime;
+
+
+  const activityIcon =
+    document.getElementById("activityIcon1");
+
+
+  activityIcon.classList.add(
+    patient.activityColor
+  );
+
+
+  document
+    .getElementById("activityIconSymbol1")
+    .className =
+      patient.activityIcon;
+
+
+  /* =========================
+     BACK BUTTON
+     ========================= */
+
+  document
+    .getElementById("backBtn")
+    .addEventListener("click", () => {
+
+      window.location.href =
+        "index.html";
+
+    });
+
+
+  /* =========================
+     VIEW ALERTS
+     ========================= */
+
+  function goToAlerts() {
+
+    window.location.href =
+      "alerts.html";
+
+  }
+
+</script>
+
+</body>
+</html>

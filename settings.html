@@ -68,6 +68,10 @@
       cursor: pointer;
     }
 
+    .back-btn:hover {
+      color: var(--red);
+    }
+
     .title {
       font-size: 18px;
       font-weight: bold;
@@ -236,107 +240,218 @@
     }
   </style>
 </head>
+
 <body>
 
 <div class="phone">
 
   <!-- Topbar -->
   <div class="topbar">
+
     <div class="top-left">
-      <i class="ti ti-arrow-left back-btn"></i>
-      <div class="title">Settings</div>
+
+      <!-- Back Button -->
+      <i
+        class="ti ti-arrow-left back-btn"
+        id="backBtn">
+      </i>
+
+      <div class="title">
+        Settings
+      </div>
+
     </div>
+
     <i class="ti ti-settings gear"></i>
+
   </div>
+
 
   <div class="content">
 
     <!-- Profile -->
-    <div class="section-title">Profile</div>
+    <div class="section-title">
+      Profile
+    </div>
+
     <div class="card">
       <div class="profile">
-        <div class="avatar">MR</div>
-        <div>
-          <div class="name">Maria Reyes</div>
-          <div class="role">Head Caregiver</div>
+
+        <div class="avatar">
+          MR
         </div>
+
+        <div>
+          <div class="name">
+            Maria Reyes
+          </div>
+
+          <div class="role">
+            Head Caregiver
+          </div>
+        </div>
+
       </div>
     </div>
+
 
     <!-- Notifications -->
-    <div class="section-title">Notifications</div>
-    <div class="card">
-      <div class="setting-row">
-        <div>
-          <div class="setting-label">Fall Alerts</div>
-          <div class="setting-sub">Emergency fall notifications</div>
-        </div>
-        <div class="toggle active"></div>
-      </div>
-
-      <div class="setting-row">
-        <div>
-          <div class="setting-label">SMS Alerts</div>
-          <div class="setting-sub">Send alerts via SMS</div>
-        </div>
-        <div class="toggle active"></div>
-      </div>
-
-      <div class="setting-row">
-        <div>
-          <div class="setting-label">Sound Alerts</div>
-          <div class="setting-sub">Play sound on emergency</div>
-        </div>
-        <div class="toggle"></div>
-      </div>
+    <div class="section-title">
+      Notifications
     </div>
+
+    <div class="card">
+
+      <div class="setting-row">
+
+        <div>
+          <div class="setting-label">
+            Fall Alerts
+          </div>
+
+          <div class="setting-sub">
+            Emergency fall notifications
+          </div>
+        </div>
+
+        <div class="toggle active"></div>
+
+      </div>
+
+
+      <div class="setting-row">
+
+        <div>
+          <div class="setting-label">
+            SMS Alerts
+          </div>
+
+          <div class="setting-sub">
+            Send alerts via SMS
+          </div>
+        </div>
+
+        <div class="toggle active"></div>
+
+      </div>
+
+
+      <div class="setting-row">
+
+        <div>
+          <div class="setting-label">
+            Sound Alerts
+          </div>
+
+          <div class="setting-sub">
+            Play sound on emergency
+          </div>
+        </div>
+
+        <div class="toggle"></div>
+
+      </div>
+
+    </div>
+
 
     <!-- App Settings -->
-    <div class="section-title">App Settings</div>
-    <div class="card">
-      <div class="setting-row">
-        <div>
-          <div class="setting-label">Dark Mode</div>
-          <div class="setting-sub">Switch app appearance</div>
-        </div>
-        <div class="toggle"></div>
-      </div>
-
-      <div class="setting-row">
-        <div>
-          <div class="setting-label">Language</div>
-          <div class="setting-sub">English</div>
-        </div>
-        <i class="ti ti-chevron-right"></i>
-      </div>
-
-      <div class="setting-row">
-        <div>
-          <div class="setting-label">Version</div>
-          <div class="setting-sub">FallGuard v1.0</div>
-        </div>
-      </div>
+    <div class="section-title">
+      App Settings
     </div>
+
+    <div class="card">
+
+      <div class="setting-row">
+
+        <div>
+          <div class="setting-label">
+            Dark Mode
+          </div>
+
+          <div class="setting-sub">
+            Switch app appearance
+          </div>
+        </div>
+
+        <div class="toggle"></div>
+
+      </div>
+
+
+      <div class="setting-row">
+
+        <div>
+          <div class="setting-label">
+            Language
+          </div>
+
+          <div class="setting-sub">
+            English
+          </div>
+        </div>
+
+        <i class="ti ti-chevron-right"></i>
+
+      </div>
+
+
+      <div class="setting-row">
+
+        <div>
+          <div class="setting-label">
+            Version
+          </div>
+
+          <div class="setting-sub">
+            FallGuard v1.0
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
 
     <!-- Devices -->
-    <div class="section-title">System</div>
-    <div class="card">
-      <div class="setting-row">
-        <div>
-          <div class="setting-label">Connected Devices</div>
-          <div class="setting-sub">3 ESP32 units active</div>
-        </div>
-        <span class="device-status">Synced</span>
-      </div>
+    <div class="section-title">
+      System
     </div>
 
+    <div class="card">
+
+      <div class="setting-row">
+
+        <div>
+          <div class="setting-label">
+            Connected Devices
+          </div>
+
+          <div class="setting-sub">
+            3 ESP32 units active
+          </div>
+        </div>
+
+        <span class="device-status">
+          Synced
+        </span>
+
+      </div>
+
+    </div>
+
+
     <!-- Logout -->
-    <button class="logout-btn">Logout</button>
+    <button class="logout-btn">
+      Logout
+    </button>
 
   </div>
 
-  <!-- Bottom Nav -->
+
+  <!-- Bottom Navigation -->
   <div class="bottom-nav">
+
     <div class="nav-btn">
       <i class="ti ti-home"></i>
       <span>Home</span>
@@ -361,42 +476,78 @@
       <i class="ti ti-settings"></i>
       <span>Settings</span>
     </div>
+
   </div>
+
 </div>
 
+
 <script>
-  // Back
-  document.querySelector(".back-btn")
-    .addEventListener("click", () => {
-      window.history.back();
+
+  /* =========================
+     BACK BUTTON
+     ========================= */
+
+  document
+    .getElementById("backBtn")
+    .addEventListener("click", function () {
+
+      window.location.href = "index.html";
+
     });
 
-  // Toggle switches
-document.querySelectorAll(".nav-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const page = btn.textContent.trim();
 
-    if (page === "Home") {
-      window.location.href = "index.html";
-    }
+  /* =========================
+     TOGGLE SWITCHES
+     ========================= */
 
-    if (page === "Patients") {
-      window.location.href = "patients.html";
-    }
+  document
+    .querySelectorAll(".toggle")
+    .forEach(toggle => {
 
-    if (page === "Alerts") {
-      window.location.href = "alerts.html";
-    }
+      toggle.addEventListener("click", function () {
+        this.classList.toggle("active");
+      });
 
-    if (page === "History") {
-      window.location.href = "history.html";
-    }
+    });
 
-    if (page === "Settings") {
-      window.location.href = "settings.html";
-    }
-  });
-});
+
+  /* =========================
+     BOTTOM NAVIGATION
+     ========================= */
+
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(btn => {
+
+      btn.addEventListener("click", () => {
+
+        const page = btn.textContent.trim();
+
+        if (page === "Home") {
+          window.location.href = "index.html";
+        }
+
+        if (page === "Patients") {
+          window.location.href = "patients.html";
+        }
+
+        if (page === "Alerts") {
+          window.location.href = "alerts.html";
+        }
+
+        if (page === "History") {
+          window.location.href = "history.html";
+        }
+
+        if (page === "Settings") {
+          window.location.href = "settings.html";
+        }
+
+      });
+
+    });
+
 </script>
 
 </body>

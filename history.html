@@ -70,6 +70,10 @@
       cursor: pointer;
     }
 
+    .back-btn:hover {
+      color: var(--red);
+    }
+
     .title {
       font-size: 18px;
       font-weight: bold;
@@ -119,10 +123,21 @@
       flex-shrink: 0;
     }
 
-    .red { background: var(--red); }
-    .green { background: var(--green); }
-    .blue { background: var(--blue); }
-    .yellow { background: var(--yellow); }
+    .red {
+      background: var(--red);
+    }
+
+    .green {
+      background: var(--green);
+    }
+
+    .blue {
+      background: var(--blue);
+    }
+
+    .yellow {
+      background: var(--yellow);
+    }
 
     .history-content {
       flex: 1;
@@ -216,105 +231,208 @@
     }
   </style>
 </head>
+
 <body>
 
 <div class="phone">
 
   <!-- Topbar -->
   <div class="topbar">
+
     <div class="top-left">
-      <i class="ti ti-arrow-left back-btn"></i>
-      <div class="title">History</div>
+
+      <!-- Back Button -->
+      <i
+        class="ti ti-arrow-left back-btn"
+        id="backBtn">
+      </i>
+
+      <div class="title">
+        History
+      </div>
+
     </div>
+
     <i class="ti ti-calendar-event calendar"></i>
+
   </div>
+
 
   <div class="content">
 
-    <div class="section-title">Recent Events</div>
+    <div class="section-title">
+      Recent Events
+    </div>
+
 
     <!-- Fall Event -->
     <div class="history-card">
+
       <div class="event-icon red">
         <i class="ti ti-alert-triangle"></i>
       </div>
+
       <div class="history-content">
-        <div class="event-title">Lolo Pete — Fall Detected</div>
+
+        <div class="event-title">
+          Lolo Pete — Fall Detected
+        </div>
+
         <div class="event-sub">
           High impact fall detected in Room 3.
         </div>
-        <div class="timestamp">Today · 2:47 PM</div>
+
+        <div class="timestamp">
+          Today · 2:47 PM
+        </div>
+
       </div>
+
     </div>
+
 
     <!-- Walking -->
     <div class="history-card">
+
       <div class="event-icon blue">
         <i class="ti ti-walk"></i>
       </div>
+
       <div class="history-content">
-        <div class="event-title">Lola Ana — Started Walking</div>
+
+        <div class="event-title">
+          Lola Ana — Started Walking
+        </div>
+
         <div class="event-sub">
           Motion activity detected in Hallway.
         </div>
-        <div class="timestamp">Today · 2:31 PM</div>
+
+        <div class="timestamp">
+          Today · 2:31 PM
+        </div>
+
       </div>
+
     </div>
+
 
     <!-- Resolved -->
     <div class="history-card">
+
       <div class="event-icon green">
         <i class="ti ti-check"></i>
       </div>
+
       <div class="history-content">
-        <div class="event-title">Mang Ben — Alert Resolved</div>
+
+        <div class="event-title">
+          Mang Ben — Alert Resolved
+        </div>
+
         <div class="event-sub">
           No fall confirmed after caregiver review.
         </div>
-        <div class="timestamp">Today · 1:18 PM</div>
+
+        <div class="timestamp">
+          Today · 1:18 PM
+        </div>
+
       </div>
+
     </div>
+
 
     <!-- Near Fall -->
     <div class="history-card">
+
       <div class="event-icon yellow">
         <i class="ti ti-alert-circle"></i>
       </div>
+
       <div class="history-content">
-        <div class="event-title">Lolo Pete — Near-fall</div>
+
+        <div class="event-title">
+          Lolo Pete — Near-fall
+        </div>
+
         <div class="event-sub">
           Possible stumble detected in bathroom.
         </div>
-        <div class="timestamp">Yesterday · 6:14 PM</div>
+
+        <div class="timestamp">
+          Yesterday · 6:14 PM
+        </div>
+
       </div>
+
     </div>
 
+
     <!-- Summary -->
-    <div class="section-title">Summary</div>
+    <div class="section-title">
+      Summary
+    </div>
+
 
     <div class="summary-card">
+
       <div class="summary-grid">
-        <div class="summary-box">
-          <div class="label">Falls</div>
-          <div class="summary-value" style="color:#E24B4A;">3</div>
-        </div>
 
         <div class="summary-box">
-          <div class="label">Resolved</div>
-          <div class="summary-value" style="color:#3B9C3A;">5</div>
+
+          <div class="label">
+            Falls
+          </div>
+
+          <div
+            class="summary-value"
+            style="color:#E24B4A;">
+            3
+          </div>
+
         </div>
 
+
         <div class="summary-box">
-          <div class="label">Events</div>
-          <div class="summary-value" style="color:#378ADD;">12</div>
+
+          <div class="label">
+            Resolved
+          </div>
+
+          <div
+            class="summary-value"
+            style="color:#3B9C3A;">
+            5
+          </div>
+
         </div>
+
+
+        <div class="summary-box">
+
+          <div class="label">
+            Events
+          </div>
+
+          <div
+            class="summary-value"
+            style="color:#378ADD;">
+            12
+          </div>
+
+        </div>
+
       </div>
+
     </div>
 
   </div>
 
-  <!-- Bottom Nav -->
+
+  <!-- Bottom Navigation -->
   <div class="bottom-nav">
+
     <div class="nav-btn">
       <i class="ti ti-home"></i>
       <span>Home</span>
@@ -339,36 +457,63 @@
       <i class="ti ti-settings"></i>
       <span>Settings</span>
     </div>
+
   </div>
+
 </div>
 
+
 <script>
-  // Back button
-document.querySelectorAll(".nav-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const page = btn.textContent.trim();
 
-    if (page === "Home") {
+  /* =========================
+     BACK BUTTON
+     ========================= */
+
+  document
+    .getElementById("backBtn")
+    .addEventListener("click", function () {
+
       window.location.href = "index.html";
-    }
 
-    if (page === "Patients") {
-      window.location.href = "patients.html";
-    }
+    });
 
-    if (page === "Alerts") {
-      window.location.href = "alerts.html";
-    }
 
-    if (page === "History") {
-      window.location.href = "history.html";
-    }
+  /* =========================
+     BOTTOM NAVIGATION
+     ========================= */
 
-    if (page === "Settings") {
-      window.location.href = "settings.html";
-    }
-  });
-});
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(btn => {
+
+      btn.addEventListener("click", () => {
+
+        const page = btn.textContent.trim();
+
+        if (page === "Home") {
+          window.location.href = "index.html";
+        }
+
+        if (page === "Patients") {
+          window.location.href = "patients.html";
+        }
+
+        if (page === "Alerts") {
+          window.location.href = "alerts.html";
+        }
+
+        if (page === "History") {
+          window.location.href = "history.html";
+        }
+
+        if (page === "Settings") {
+          window.location.href = "settings.html";
+        }
+
+      });
+
+    });
+
 </script>
 
 </body>

@@ -39,7 +39,6 @@
       padding: 20px 0;
     }
 
-    /* Phone frame */
     .phone {
       width: 390px;
       max-width: 100%;
@@ -204,6 +203,13 @@
       margin-bottom: 12px;
       background: white;
       box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .patient-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.10);
     }
 
     .patient-left {
@@ -223,9 +229,17 @@
       color: white;
     }
 
-    .red { background: var(--red); }
-    .green { background: var(--green); }
-    .blue { background: var(--blue); }
+    .red {
+      background: var(--red);
+    }
+
+    .green {
+      background: var(--green);
+    }
+
+    .blue {
+      background: var(--blue);
+    }
 
     .patient-name {
       font-size: 15px;
@@ -241,22 +255,64 @@
     .status {
       font-size: 12px;
       font-weight: bold;
+      margin-top: 2px;
     }
 
-    .danger { color: var(--red); }
-    .safe { color: var(--green); }
+    .danger {
+      color: var(--red);
+    }
+
+    .safe {
+      color: var(--green);
+    }
+
+    /* Bottom Nav */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 390px;
+      max-width: 100%;
+      background: white;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.04);
+    }
+
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 11px;
+      color: #777;
+      cursor: pointer;
+      gap: 3px;
+    }
+
+    .nav-btn i {
+      font-size: 20px;
+    }
+
+    .active-nav {
+      color: #E24B4A;
+      font-weight: bold;
+    }
   </style>
 </head>
+
 <body>
 
 <div class="phone">
 
   <!-- Topbar -->
   <div class="topbar">
+
     <div class="brand">
       <div class="brand-icon">
         <i class="ti ti-shield-heart"></i>
       </div>
+
       <div>
         <div class="brand-name">FallGuard</div>
         <div class="brand-sub">Caregiver App</div>
@@ -267,78 +323,152 @@
       <i class="ti ti-bell"></i>
       <span class="notif-dot"></span>
     </div>
+
   </div>
+
 
   <div class="content">
 
-        <!-- FALL ALERT -->
+    <!-- FALL ALERT -->
     <div class="card alert-card">
+
       <div class="alert-top">
+
         <div class="alert-icon">
           <i class="ti ti-alert-triangle"></i>
         </div>
+
         <div>
-          <div class="alert-title">Fall Detected — Lolo Pete</div>
+          <div class="alert-title">
+            Fall Detected — Lolo Pete
+          </div>
+
           <div class="alert-sub">
             Room 3 · Today at 2:47 PM · Confidence 94%
           </div>
         </div>
+
       </div>
 
       <div class="alert-actions">
-        <button class="btn btn-outline" id="dismissBtn">Dismiss</button>
-        <button class="btn btn-danger" id="callBtn">
-          <i class="ti ti-phone"></i> Call
+
+        <button class="btn btn-outline" id="dismissBtn">
+          Dismiss
         </button>
+
+        <button class="btn btn-danger" id="callBtn">
+          <i class="ti ti-phone"></i>
+          Call
+        </button>
+
       </div>
+
     </div>
+
 
     <!-- PATIENTS -->
-    <div class="section-title">Patients</div>
+    <div class="section-title">
+      Patients
+    </div>
+
 
     <!-- Lolo Pete -->
-    <div class="patient-card">
+    <div class="patient-card" onclick="openPatient('pete')">
+
       <div class="patient-left">
-        <div class="avatar red">LP</div>
-        <div>
-          <div class="patient-name">Lolo Pete</div>
-          <div class="patient-meta">78 yrs · Room 3</div>
-          <div class="status danger">● Fall Detected</div>
+
+        <div class="avatar red">
+          LP
         </div>
+
+        <div>
+          <div class="patient-name">
+            Lolo Pete
+          </div>
+
+          <div class="patient-meta">
+            78 yrs · Room 3
+          </div>
+
+          <div class="status danger">
+            ● Fall Detected
+          </div>
+        </div>
+
       </div>
+
       <i class="ti ti-chevron-right"></i>
+
     </div>
+
 
     <!-- Lola Ana -->
-    <div class="patient-card">
+    <div class="patient-card" onclick="openPatient('ana')">
+
       <div class="patient-left">
-        <div class="avatar green">LA</div>
-        <div>
-          <div class="patient-name">Lola Ana</div>
-          <div class="patient-meta">74 yrs · Room 1</div>
-          <div class="status safe">● Safe · Walking</div>
+
+        <div class="avatar green">
+          LA
         </div>
+
+        <div>
+          <div class="patient-name">
+            Lola Ana
+          </div>
+
+          <div class="patient-meta">
+            74 yrs · Room 1
+          </div>
+
+          <div class="status safe">
+            ● Safe · Walking
+          </div>
+        </div>
+
       </div>
+
       <i class="ti ti-chevron-right"></i>
+
     </div>
+
 
     <!-- Mang Ben -->
-    <div class="patient-card">
+    <div class="patient-card" onclick="openPatient('ben')">
+
       <div class="patient-left">
-        <div class="avatar blue">MB</div>
-        <div>
-          <div class="patient-name">Mang Ben</div>
-          <div class="patient-meta">82 yrs · Room 2</div>
-          <div class="status safe">● Safe · Resting</div>
+
+        <div class="avatar blue">
+          MB
         </div>
+
+        <div>
+          <div class="patient-name">
+            Mang Ben
+          </div>
+
+          <div class="patient-meta">
+            82 yrs · Room 2
+          </div>
+
+          <div class="status safe">
+            ● Safe · Resting
+          </div>
+        </div>
+
       </div>
+
       <i class="ti ti-chevron-right"></i>
+
     </div>
 
+
     <!-- QUICK STATS -->
-    <div class="section-title" style="margin-top:20px;">Quick Stats</div>
+    <div class="section-title" style="margin-top:20px;">
+      Quick Stats
+    </div>
 
     <div class="card">
+
       <div style="
         display:grid;
         grid-template-columns:1fr 1fr;
@@ -350,92 +480,121 @@
           padding:14px;
           border-radius:12px;
         ">
-          <div style="font-size:12px;color:#777;">Fall Events</div>
+          <div style="font-size:12px;color:#777;">
+            Fall Events
+          </div>
+
           <div style="
             font-size:24px;
             font-weight:bold;
             color:#E24B4A;
             margin-top:4px;
-          ">3</div>
+          ">
+            3
+          </div>
         </div>
+
 
         <div style="
           background:#fafafa;
           padding:14px;
           border-radius:12px;
         ">
-          <div style="font-size:12px;color:#777;">Patients Safe</div>
+          <div style="font-size:12px;color:#777;">
+            Patients Safe
+          </div>
+
           <div style="
             font-size:24px;
             font-weight:bold;
             color:#3B9C3A;
             margin-top:4px;
-          ">2/3</div>
+          ">
+            2/3
+          </div>
         </div>
+
 
         <div style="
           background:#fafafa;
           padding:14px;
           border-radius:12px;
         ">
-          <div style="font-size:12px;color:#777;">Avg Response</div>
+          <div style="font-size:12px;color:#777;">
+            Avg Response
+          </div>
+
           <div style="
             font-size:22px;
             font-weight:bold;
             margin-top:4px;
-          ">1.8m</div>
+          ">
+            1.8m
+          </div>
         </div>
+
 
         <div style="
           background:#fafafa;
           padding:14px;
           border-radius:12px;
         ">
-          <div style="font-size:12px;color:#777;">Alerts Sent</div>
+          <div style="font-size:12px;color:#777;">
+            Alerts Sent
+          </div>
+
           <div style="
             font-size:22px;
             font-weight:bold;
             margin-top:4px;
-          ">7</div>
+          ">
+            7
+          </div>
         </div>
+
       </div>
+
     </div>
 
+
     <!-- DEVICES -->
-    <div class="section-title">Devices</div>
+    <div class="section-title">
+      Devices
+    </div>
 
     <div class="card">
+
       <div style="margin-bottom:14px;">
-        <strong>ESP32-W3 — Lolo Pete</strong><br>
-        <span style="font-size:12px;color:#666;">Online · Battery 62%</span>
+        <strong>ESP32-W3 — Lolo Pete</strong>
+        <br>
+        <span style="font-size:12px;color:#666;">
+          Online · Battery 62%
+        </span>
       </div>
 
       <div style="margin-bottom:14px;">
-        <strong>ESP32-W1 — Lola Ana</strong><br>
-        <span style="font-size:12px;color:#666;">Online · Battery 88%</span>
+        <strong>ESP32-W1 — Lola Ana</strong>
+        <br>
+        <span style="font-size:12px;color:#666;">
+          Online · Battery 88%
+        </span>
       </div>
 
       <div>
-        <strong>ESP32-W2 — Mang Ben</strong><br>
-        <span style="font-size:12px;color:#E24B4A;">Online · Battery 21%</span>
+        <strong>ESP32-W2 — Mang Ben</strong>
+        <br>
+        <span style="font-size:12px;color:#E24B4A;">
+          Online · Battery 21%
+        </span>
       </div>
+
     </div>
 
-      </div> <!-- content -->
+  </div>
+
 
   <!-- Bottom Navigation -->
-  <div style="
-    position: fixed;
-    bottom: 0;
-    width: 390px;
-    max-width: 100%;
-    background: white;
-    border-top: 1px solid rgba(0,0,0,0.08);
-    display: flex;
-    justify-content: space-around;
-    padding: 12px 0;
-    box-shadow: 0 -4px 10px rgba(0,0,0,0.04);
-  " id="bottomNav">
+  <div class="bottom-nav">
 
     <div class="nav-btn active-nav">
       <i class="ti ti-home"></i>
@@ -461,57 +620,60 @@
       <i class="ti ti-settings"></i>
       <span>Settings</span>
     </div>
+
   </div>
-</div> <!-- phone -->
 
-<style>
-  .nav-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 11px;
-    color: #777;
-    cursor: pointer;
-    gap: 3px;
-  }
+</div>
 
-  .nav-btn i {
-    font-size: 20px;
-  }
-
-  .active-nav {
-    color: #E24B4A;
-    font-weight: bold;
-  }
-</style>
 
 <script>
-  // Dismiss alert
-document.querySelectorAll(".nav-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const page = btn.textContent.trim();
 
-    if (page === "Home") {
-      window.location.href = "index.html";
-    }
+  /* =========================
+     OPEN PATIENT INFORMATION
+     ========================= */
 
-    if (page === "Patients") {
-      window.location.href = "patients.html";
-    }
+  function openPatient(patientId) {
+    window.location.href =
+      "patient-info.html?id=" + patientId;
+  }
 
-    if (page === "Alerts") {
-      window.location.href = "alerts.html";
-    }
 
-    if (page === "History") {
-      window.location.href = "history.html";
-    }
+  /* =========================
+     BOTTOM NAVIGATION
+     ========================= */
 
-    if (page === "Settings") {
-      window.location.href = "settings.html";
-    }
-  });
-});
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(btn => {
+
+      btn.addEventListener("click", () => {
+
+        const page = btn.textContent.trim();
+
+        if (page === "Home") {
+          window.location.href = "index.html";
+        }
+
+        if (page === "Patients") {
+          window.location.href = "patients.html";
+        }
+
+        if (page === "Alerts") {
+          window.location.href = "alerts.html";
+        }
+
+        if (page === "History") {
+          window.location.href = "history.html";
+        }
+
+        if (page === "Settings") {
+          window.location.href = "settings.html";
+        }
+
+      });
+
+    });
+
 </script>
 
 </body>

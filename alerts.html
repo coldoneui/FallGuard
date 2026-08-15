@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FallGuard - Alerts</title>
+  <title>FallGuard Mobile App</title>
 
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+  />
 
   <style>
     * {
@@ -18,15 +20,17 @@
 
     :root {
       --bg: #f4f5f7;
-      --card: #fff;
+      --card: #ffffff;
       --text: #1a1a18;
-      --sub: #777;
+      --sub: #666;
       --red: #E24B4A;
-      --yellow: #F6A623;
+      --red-light: #FCEBEB;
       --green: #3B9C3A;
+      --green-light: #EAF7EA;
+      --blue: #378ADD;
+      --border: rgba(0,0,0,0.08);
       --shadow: 0 4px 12px rgba(0,0,0,0.06);
       --radius: 16px;
-      --border: rgba(0,0,0,0.08);
     }
 
     body {
@@ -34,55 +38,105 @@
       display: flex;
       justify-content: center;
       min-height: 100vh;
+      padding: 20px 0;
     }
 
+    /* Phone frame */
     .phone {
       width: 390px;
       max-width: 100%;
-      min-height: 100vh;
       background: var(--bg);
+      min-height: 100vh;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Topbar */
+    /* Top App Bar */
     .topbar {
       background: white;
-      padding: 18px;
+      padding: 18px 18px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 10;
+      border-bottom: 1px solid var(--border);
     }
 
-    .top-left {
+    .topbar-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
+    /* Back button */
     .back-btn {
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      border-radius: 8px;
+    }
+
+    .back-btn:hover {
+      background: #f1f1f1;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--red);
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-name {
+      font-size: 17px;
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--sub);
+    }
+
+    .notif {
+      position: relative;
       font-size: 22px;
+      color: var(--text);
       cursor: pointer;
     }
 
-    .title {
-      font-size: 18px;
-      font-weight: bold;
+    .notif-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--red);
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      right: 2px;
     }
 
-    .bell {
-      font-size: 22px;
-      color: var(--red);
-    }
-
-    /* Content */
+    /* Main Content */
     .content {
       padding: 18px;
-      padding-bottom: 100px;
+      padding-bottom: 95px;
     }
 
     .section-title {
@@ -91,26 +145,120 @@
       color: #888;
       margin-bottom: 12px;
       text-transform: uppercase;
-      letter-spacing: .05em;
+      letter-spacing: 0.05em;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      margin-bottom: 16px;
     }
 
     /* Alert Card */
     .alert-card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 16px;
-      margin-bottom: 14px;
-      box-shadow: var(--shadow);
-      border-left: 5px solid var(--red);
+      background: var(--red-light);
+      border: 1px solid #f2bcbc;
     }
-
-    .medium { border-left-color: var(--yellow); }
-    .low { border-left-color: var(--green); }
 
     .alert-top {
       display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .alert-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+    }
+
+    .alert-title {
+      font-weight: bold;
+      color: #8d1f1f;
+      font-size: 15px;
+    }
+
+    .alert-sub {
+      font-size: 12px;
+      color: #8d1f1f;
+      margin-top: 2px;
+    }
+
+    .alert-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 11px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #d9a4a4;
+      color: #9e2b2b;
+    }
+
+    .btn-danger {
+      background: var(--red);
+      color: white;
+    }
+
+    /* Patient Cards */
+    .patient-card {
+      display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 14px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .patient-left {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+    }
+
+    .red {
+      background: var(--red);
+    }
+
+    .green {
+      background: var(--green);
+    }
+
+    .blue {
+      background: var(--blue);
     }
 
     .patient-name {
@@ -118,68 +266,33 @@
       font-weight: bold;
     }
 
-    .severity {
-      font-size: 11px;
-      font-weight: bold;
-      padding: 4px 10px;
-      border-radius: 20px;
+    .patient-meta {
+      font-size: 12px;
+      color: var(--sub);
+      margin-top: 2px;
     }
 
-    .high {
-      background: #fde9e9;
+    .status {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .danger {
       color: var(--red);
     }
 
-    .med {
-      background: #fff3df;
-      color: #b37400;
-    }
-
     .safe {
-      background: #e8f7ea;
       color: var(--green);
     }
 
-    .meta {
-      font-size: 12px;
-      color: var(--sub);
-      margin-top: 8px;
-      line-height: 1.5;
-    }
-
-    .actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .btn {
-      flex: 1;
-      padding: 10px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .resolve {
-      background: #f4f4f4;
-    }
-
-    .call {
-      background: var(--red);
-      color: white;
-    }
-
-    /* Bottom Nav */
+    /* Bottom Navigation */
     .bottom-nav {
       position: fixed;
       bottom: 0;
       width: 390px;
       max-width: 100%;
       background: white;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid rgba(0,0,0,0.08);
       display: flex;
       justify-content: space-around;
       padding: 12px 0;
@@ -190,101 +303,410 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3px;
       font-size: 11px;
       color: #777;
       cursor: pointer;
+      gap: 3px;
     }
 
     .nav-btn i {
       font-size: 20px;
     }
 
-    .active {
-      color: var(--red);
+    .active-nav {
+      color: #E24B4A;
       font-weight: bold;
     }
   </style>
 </head>
+
 <body>
 
 <div class="phone">
 
   <!-- Topbar -->
   <div class="topbar">
-    <div class="top-left">
-      <i class="ti ti-arrow-left back-btn"></i>
-      <div class="title">Alerts</div>
+
+    <div class="topbar-left">
+
+      <!-- Back Button -->
+      <button class="back-btn" id="backBtn">
+        <i class="ti ti-arrow-left"></i>
+      </button>
+
+      <!-- Brand -->
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="ti ti-shield-heart"></i>
+        </div>
+
+        <div>
+          <div class="brand-name">FallGuard</div>
+          <div class="brand-sub">Caregiver App</div>
+        </div>
+      </div>
+
     </div>
-    <i class="ti ti-bell bell"></i>
+
+    <!-- Notification -->
+    <div class="notif">
+      <i class="ti ti-bell"></i>
+      <span class="notif-dot"></span>
+    </div>
+
   </div>
 
+
+  <!-- Main Content -->
   <div class="content">
 
-    <div class="section-title">Active Alerts</div>
+    <!-- FALL ALERT -->
+    <div class="card alert-card">
 
-    <!-- High -->
-    <div class="alert-card">
       <div class="alert-top">
-        <div class="patient-name">Lolo Pete</div>
-        <span class="severity high">HIGH</span>
+
+        <div class="alert-icon">
+          <i class="ti ti-alert-triangle"></i>
+        </div>
+
+        <div>
+          <div class="alert-title">
+            Fall Detected — Lolo Pete
+          </div>
+
+          <div class="alert-sub">
+            Room 3 · Today at 2:47 PM · Confidence 94%
+          </div>
+        </div>
+
       </div>
 
-      <div class="meta">
-        Fall Detected<br>
-        Room 3 · 2:47 PM<br>
-        Confidence: 94%
+      <div class="alert-actions">
+
+        <button class="btn btn-outline" id="dismissBtn">
+          Dismiss
+        </button>
+
+        <button class="btn btn-danger" id="callBtn">
+          <i class="ti ti-phone"></i>
+          Call
+        </button>
+
       </div>
 
-      <div class="actions">
-        <button class="btn resolve">Resolve</button>
-        <button class="btn call">Call</button>
-      </div>
     </div>
 
-    <!-- Medium -->
-    <div class="alert-card medium">
-      <div class="alert-top">
-        <div class="patient-name">Mang Ben</div>
-        <span class="severity med">MEDIUM</span>
-      </div>
 
-      <div class="meta">
-        Near-fall detected<br>
-        Bathroom · 1:18 PM<br>
-        Confidence: 68%
-      </div>
-
-      <div class="actions">
-        <button class="btn resolve">Resolve</button>
-        <button class="btn call">Call</button>
-      </div>
+    <!-- PATIENTS -->
+    <div class="section-title">
+      Patients
     </div>
 
-    <!-- Low -->
-    <div class="alert-card low">
-      <div class="alert-top">
-        <div class="patient-name">Lola Ana</div>
-        <span class="severity safe">LOW</span>
+
+    <!-- Lolo Pete -->
+    <div class="patient-card">
+
+      <div class="patient-left">
+
+        <div class="avatar red">
+          LP
+        </div>
+
+        <div>
+          <div class="patient-name">
+            Lolo Pete
+          </div>
+
+          <div class="patient-meta">
+            78 yrs · Room 3
+          </div>
+
+          <div class="status danger">
+            ● Fall Detected
+          </div>
+        </div>
+
       </div>
 
-      <div class="meta">
-        Low movement warning<br>
-        Room 1 · 11:40 AM<br>
-        Monitoring active
+      <i class="ti ti-chevron-right"></i>
+
+    </div>
+
+
+    <!-- Lola Ana -->
+    <div class="patient-card">
+
+      <div class="patient-left">
+
+        <div class="avatar green">
+          LA
+        </div>
+
+        <div>
+          <div class="patient-name">
+            Lola Ana
+          </div>
+
+          <div class="patient-meta">
+            74 yrs · Room 1
+          </div>
+
+          <div class="status safe">
+            ● Safe · Walking
+          </div>
+        </div>
+
       </div>
 
-      <div class="actions">
-        <button class="btn resolve">Ignore</button>
-        <button class="btn call">Check</button>
+      <i class="ti ti-chevron-right"></i>
+
+    </div>
+
+
+    <!-- Mang Ben -->
+    <div class="patient-card">
+
+      <div class="patient-left">
+
+        <div class="avatar blue">
+          MB
+        </div>
+
+        <div>
+          <div class="patient-name">
+            Mang Ben
+          </div>
+
+          <div class="patient-meta">
+            82 yrs · Room 2
+          </div>
+
+          <div class="status safe">
+            ● Safe · Resting
+          </div>
+        </div>
+
       </div>
+
+      <i class="ti ti-chevron-right"></i>
+
+    </div>
+
+
+    <!-- QUICK STATS -->
+    <div
+      class="section-title"
+      style="margin-top:20px;"
+    >
+      Quick Stats
+    </div>
+
+
+    <div class="card">
+
+      <div
+        style="
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:14px;
+        "
+      >
+
+        <!-- Fall Events -->
+        <div
+          style="
+            background:#fafafa;
+            padding:14px;
+            border-radius:12px;
+          "
+        >
+          <div
+            style="
+              font-size:12px;
+              color:#777;
+            "
+          >
+            Fall Events
+          </div>
+
+          <div
+            style="
+              font-size:24px;
+              font-weight:bold;
+              color:#E24B4A;
+              margin-top:4px;
+            "
+          >
+            3
+          </div>
+        </div>
+
+
+        <!-- Patients Safe -->
+        <div
+          style="
+            background:#fafafa;
+            padding:14px;
+            border-radius:12px;
+          "
+        >
+          <div
+            style="
+              font-size:12px;
+              color:#777;
+            "
+          >
+            Patients Safe
+          </div>
+
+          <div
+            style="
+              font-size:24px;
+              font-weight:bold;
+              color:#3B9C3A;
+              margin-top:4px;
+            "
+          >
+            2/3
+          </div>
+        </div>
+
+
+        <!-- Average Response -->
+        <div
+          style="
+            background:#fafafa;
+            padding:14px;
+            border-radius:12px;
+          "
+        >
+          <div
+            style="
+              font-size:12px;
+              color:#777;
+            "
+          >
+            Avg Response
+          </div>
+
+          <div
+            style="
+              font-size:22px;
+              font-weight:bold;
+              margin-top:4px;
+            "
+          >
+            1.8m
+          </div>
+        </div>
+
+
+        <!-- Alerts Sent -->
+        <div
+          style="
+            background:#fafafa;
+            padding:14px;
+            border-radius:12px;
+          "
+        >
+          <div
+            style="
+              font-size:12px;
+              color:#777;
+            "
+          >
+            Alerts Sent
+          </div>
+
+          <div
+            style="
+              font-size:22px;
+              font-weight:bold;
+              margin-top:4px;
+            "
+          >
+            7
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- DEVICES -->
+    <div class="section-title">
+      Devices
+    </div>
+
+
+    <div class="card">
+
+      <div style="margin-bottom:14px;">
+        <strong>
+          ESP32-W3 — Lolo Pete
+        </strong>
+
+        <br>
+
+        <span
+          style="
+            font-size:12px;
+            color:#666;
+          "
+        >
+          Online · Battery 62%
+        </span>
+      </div>
+
+
+      <div style="margin-bottom:14px;">
+        <strong>
+          ESP32-W1 — Lola Ana
+        </strong>
+
+        <br>
+
+        <span
+          style="
+            font-size:12px;
+            color:#666;
+          "
+        >
+          Online · Battery 88%
+        </span>
+      </div>
+
+
+      <div>
+        <strong>
+          ESP32-W2 — Mang Ben
+        </strong>
+
+        <br>
+
+        <span
+          style="
+            font-size:12px;
+            color:#E24B4A;
+          "
+        >
+          Online · Battery 21%
+        </span>
+      </div>
+
     </div>
 
   </div>
 
-  <!-- Bottom Nav -->
-  <div class="bottom-nav">
-    <div class="nav-btn">
+
+  <!-- Bottom Navigation -->
+  <div
+    class="bottom-nav"
+    id="bottomNav"
+  >
+
+    <div class="nav-btn active-nav">
       <i class="ti ti-home"></i>
       <span>Home</span>
     </div>
@@ -294,7 +716,7 @@
       <span>Patients</span>
     </div>
 
-    <div class="nav-btn active">
+    <div class="nav-btn">
       <i class="ti ti-bell"></i>
       <span>Alerts</span>
     </div>
@@ -308,36 +730,68 @@
       <i class="ti ti-settings"></i>
       <span>Settings</span>
     </div>
+
   </div>
+
 </div>
 
+
 <script>
-  // Back
-document.querySelectorAll(".nav-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const page = btn.textContent.trim();
 
-    if (page === "Home") {
+  /* =========================
+     BACK BUTTON
+     ========================= */
+
+  document
+    .getElementById("backBtn")
+    .addEventListener("click", () => {
+
       window.location.href = "index.html";
-    }
 
-    if (page === "Patients") {
-      window.location.href = "patients.html";
-    }
+    });
 
-    if (page === "Alerts") {
-      window.location.href = "alerts.html";
-    }
 
-    if (page === "History") {
-      window.location.href = "history.html";
-    }
+  /* =========================
+     BOTTOM NAVIGATION
+     ========================= */
 
-    if (page === "Settings") {
-      window.location.href = "settings.html";
-    }
-  });
-});
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(btn => {
+
+      btn.addEventListener("click", () => {
+
+        const page = btn.textContent.trim();
+
+
+        if (page === "Home") {
+          window.location.href = "index.html";
+        }
+
+
+        if (page === "Patients") {
+          window.location.href = "patients.html";
+        }
+
+
+        if (page === "Alerts") {
+          window.location.href = "alerts.html";
+        }
+
+
+        if (page === "History") {
+          window.location.href = "history.html";
+        }
+
+
+        if (page === "Settings") {
+          window.location.href = "settings.html";
+        }
+
+      });
+
+    });
+
 </script>
 
 </body>

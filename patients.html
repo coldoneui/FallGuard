@@ -70,6 +70,10 @@
       cursor: pointer;
     }
 
+    .back-btn:hover {
+      color: var(--red);
+    }
+
     .title {
       font-size: 18px;
       font-weight: bold;
@@ -149,9 +153,17 @@
       font-weight: bold;
     }
 
-    .red { background: var(--red); }
-    .green { background: var(--green); }
-    .blue { background: var(--blue); }
+    .red {
+      background: var(--red);
+    }
+
+    .green {
+      background: var(--green);
+    }
+
+    .blue {
+      background: var(--blue);
+    }
 
     .patient-name {
       font-size: 15px;
@@ -257,18 +269,32 @@
     }
   </style>
 </head>
+
 <body>
 
 <div class="phone">
 
   <!-- Topbar -->
   <div class="topbar">
+
     <div class="top-left">
-      <i class="ti ti-arrow-left back-btn"></i>
-      <div class="title">Patients</div>
+
+      <!-- Back Button -->
+      <i
+        class="ti ti-arrow-left back-btn"
+        id="backBtn">
+      </i>
+
+      <div class="title">
+        Patients
+      </div>
+
     </div>
+
     <i class="ti ti-search search-icon"></i>
+
   </div>
+
 
   <div class="content">
 
@@ -278,71 +304,159 @@
       <input type="text" placeholder="Search patient..." />
     </div>
 
+
     <!-- Patient List -->
-    <div class="section-title">Patient List</div>
-
-    <div class="patient-card">
-      <div class="patient-left">
-        <div class="avatar red">LP</div>
-        <div>
-          <div class="patient-name">Lolo Pete</div>
-          <div class="patient-meta">Room 3 • High Risk</div>
-          <span class="badge danger">Fall Alert</span>
-        </div>
-      </div>
-      <i class="ti ti-chevron-right"></i>
+    <div class="section-title">
+      Patient List
     </div>
 
+
+    <!-- Lolo Pete -->
     <div class="patient-card">
+
       <div class="patient-left">
-        <div class="avatar green">LA</div>
-        <div>
-          <div class="patient-name">Lola Ana</div>
-          <div class="patient-meta">Room 1 • Stable</div>
-          <span class="badge safe">Walking</span>
+
+        <div class="avatar red">
+          LP
         </div>
+
+        <div>
+          <div class="patient-name">
+            Lolo Pete
+          </div>
+
+          <div class="patient-meta">
+            Room 3 • High Risk
+          </div>
+
+          <span class="badge danger">
+            Fall Alert
+          </span>
+        </div>
+
       </div>
+
       <i class="ti ti-chevron-right"></i>
+
     </div>
 
+
+    <!-- Lola Ana -->
     <div class="patient-card">
+
       <div class="patient-left">
-        <div class="avatar blue">MB</div>
-        <div>
-          <div class="patient-name">Mang Ben</div>
-          <div class="patient-meta">Room 2 • Stable</div>
-          <span class="badge rest">Resting</span>
+
+        <div class="avatar green">
+          LA
         </div>
+
+        <div>
+          <div class="patient-name">
+            Lola Ana
+          </div>
+
+          <div class="patient-meta">
+            Room 1 • Stable
+          </div>
+
+          <span class="badge safe">
+            Walking
+          </span>
+        </div>
+
       </div>
+
       <i class="ti ti-chevron-right"></i>
+
     </div>
+
+
+    <!-- Mang Ben -->
+    <div class="patient-card">
+
+      <div class="patient-left">
+
+        <div class="avatar blue">
+          MB
+        </div>
+
+        <div>
+          <div class="patient-name">
+            Mang Ben
+          </div>
+
+          <div class="patient-meta">
+            Room 2 • Stable
+          </div>
+
+          <span class="badge rest">
+            Resting
+          </span>
+        </div>
+
+      </div>
+
+      <i class="ti ti-chevron-right"></i>
+
+    </div>
+
 
     <!-- Summary -->
-    <div class="section-title">Summary</div>
+    <div class="section-title">
+      Summary
+    </div>
+
 
     <div class="summary-card">
+
       <div class="summary-grid">
-        <div class="summary-box">
-          <div class="label">Total</div>
-          <div class="summary-value">3</div>
-        </div>
 
         <div class="summary-box">
-          <div class="label">Alert</div>
-          <div class="summary-value" style="color:#E24B4A;">1</div>
+          <div class="label">
+            Total
+          </div>
+
+          <div class="summary-value">
+            3
+          </div>
         </div>
 
+
         <div class="summary-box">
-          <div class="label">Safe</div>
-          <div class="summary-value" style="color:#3B9C3A;">2</div>
+          <div class="label">
+            Alert
+          </div>
+
+          <div
+            class="summary-value"
+            style="color:#E24B4A;">
+            1
+          </div>
         </div>
+
+
+        <div class="summary-box">
+          <div class="label">
+            Safe
+          </div>
+
+          <div
+            class="summary-value"
+            style="color:#3B9C3A;">
+            2
+          </div>
+        </div>
+
       </div>
+
     </div>
 
   </div>
 
-  <!-- Bottom Nav -->
+
+  <!-- Bottom Navigation -->
   <div class="bottom-nav">
+
     <div class="nav-btn">
       <i class="ti ti-home"></i>
       <span>Home</span>
@@ -367,36 +481,63 @@
       <i class="ti ti-settings"></i>
       <span>Settings</span>
     </div>
+
   </div>
 
 </div>
 
+
 <script>
-document.querySelectorAll(".nav-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const page = btn.textContent.trim();
 
-    if (page === "Home") {
+  /* =========================
+     BACK BUTTON
+     ========================= */
+
+  document
+    .getElementById("backBtn")
+    .addEventListener("click", function () {
+
       window.location.href = "index.html";
-    }
 
-    if (page === "Patients") {
-      window.location.href = "patients.html";
-    }
+    });
 
-    if (page === "Alerts") {
-      window.location.href = "alerts.html";
-    }
 
-    if (page === "History") {
-      window.location.href = "history.html";
-    }
+  /* =========================
+     BOTTOM NAVIGATION
+     ========================= */
 
-    if (page === "Settings") {
-      window.location.href = "settings.html";
-    }
-  });
-});
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(btn => {
+
+      btn.addEventListener("click", () => {
+
+        const page = btn.textContent.trim();
+
+        if (page === "Home") {
+          window.location.href = "index.html";
+        }
+
+        if (page === "Patients") {
+          window.location.href = "patients.html";
+        }
+
+        if (page === "Alerts") {
+          window.location.href = "alerts.html";
+        }
+
+        if (page === "History") {
+          window.location.href = "history.html";
+        }
+
+        if (page === "Settings") {
+          window.location.href = "settings.html";
+        }
+
+      });
+
+    });
+
 </script>
 
 </body>

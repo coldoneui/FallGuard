@@ -1,6 +1,4 @@
 .env.fallguard
+db/seed.py
 README.md
-app/
-db/
-requirements.txt
 venv/

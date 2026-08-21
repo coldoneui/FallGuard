@@ -1,0 +1,6 @@
+.env.fallguard
+README.md
+app/
+db/
+requirements.txt
+venv/
